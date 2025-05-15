@@ -20,4 +20,19 @@ export class ProfesorService {
 
     return await this.profesorRepository.save(profesor);
   }
+
+  async findOne(id: string): Promise<ProfesorEntity> {
+    const profesor = await this.profesorRepository.findOne({
+      where: { id },
+      relations: ['mentorias', 'evaluaciones'],
+    });
+
+    if (!profesor)
+      throw new BusinessLogicException(
+        'El profesor no existe',
+        BusinessError.NOT_FOUND,
+      );
+
+    return profesor;
+  }
 }

@@ -36,11 +36,15 @@ export class EstudianteService {
       );
     else if (student.proyectos.length > 0)
       throw new BusinessLogicException(
-        'El estudiante tiene proyectos activos',
+        'El estudiante no puede ser eliminado porque tiene proyectos activos',
         BusinessError.PRECONDITION_FAILED,
       );
     else this.estudianteRepository.remove(student);
 
     return student;
+  }
+
+  async findAllEstudiantes(): Promise<EstudianteEntity[]> {
+    return await this.estudianteRepository.find();
   }
 }

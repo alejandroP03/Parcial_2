@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { BusinessError, BusinessLogicException } from 'src/utils/error';
+import { BusinessError, BusinessLogicException } from '../utils/error';
 import { Repository } from 'typeorm';
 import { EstudianteEntity } from './estudiante.entity/estudiante.entity';
 

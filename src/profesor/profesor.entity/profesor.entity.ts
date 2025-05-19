@@ -1,5 +1,5 @@
-import { EvaluacionEntity } from 'src/evaluacion/evaluacion.entity/evaluacion.entity';
-import { ProyectoEntity } from 'src/proyecto/proyecto.entity/proyecto.entity';
+import { EvaluacionEntity } from '../../evaluacion/evaluacion.entity/evaluacion.entity';
+import { ProyectoEntity } from '../../proyecto/proyecto.entity/proyecto.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

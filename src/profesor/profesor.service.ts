@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { BusinessError, BusinessLogicException } from 'src/utils/error';
+import { BusinessError, BusinessLogicException } from '../utils/error';
 import { Repository } from 'typeorm';
 import { ProfesorEntity } from './profesor.entity/profesor.entity';
+
 
 @Injectable()
 export class ProfesorService {
@@ -12,11 +13,14 @@ export class ProfesorService {
   ) {}
 
   async create(profesor: ProfesorEntity): Promise<ProfesorEntity> {
-    if (profesor.extension <= 9999)
+    
+    console.log(profesor.extension);
+    if (profesor.extension < 1000){
       throw new BusinessLogicException(
         'El profesor tiene una extensión incorrecta',
         BusinessError.PRECONDITION_FAILED,
       );
+    }
 
     return await this.profesorRepository.save(profesor);
   }

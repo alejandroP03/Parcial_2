@@ -2,9 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { EvaluacionEntity } from './evaluacion.entity/evaluacion.entity';
-import { BusinessError, BusinessLogicException } from 'src/utils/error';
-import { ProyectoEntity } from 'src/proyecto/proyecto.entity/proyecto.entity';
-import { ProfesorEntity } from 'src/profesor/profesor.entity/profesor.entity';
+import { BusinessError, BusinessLogicException } from '../utils/error';
+import { ProyectoEntity } from '../proyecto/proyecto.entity/proyecto.entity';
+import { ProfesorEntity } from '../profesor/profesor.entity/profesor.entity';
 
 @Injectable()
 export class EvaluacionService {

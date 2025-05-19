@@ -27,6 +27,36 @@ export class EstudianteService {
   }
 
   async delete(id: string): Promise<EstudianteEntity> {
+    const student = await this.estudianteRepository.findOne({
+      where: { id },
+      relations: ['proyectos']
+    });
+
+    if (!student)
+      throw new BusinessLogicException(
+        'El estudiante no existe',
+        BusinessError.NOT_FOUND,
+      );
+    
+    if (student.proyectos && student.proyectos.length > 0)
+      throw new BusinessLogicException(
+        'El estudiante no puede ser eliminado porque tiene proyectos activos',
+        BusinessError.PRECONDITION_FAILED,
+      );
+    
+    const studentCopy = {...student};
+    
+    await this.estudianteRepository.remove(student);
+
+    return studentCopy;
+  }
+
+  async findAllEstudiantes(): Promise<EstudianteEntity[]> {
+    return await this.estudianteRepository.find();
+  }
+
+  async findOne(id: string): Promise<EstudianteEntity> {
+
     const student = await this.estudianteRepository.findOne({ where: { id } });
 
     if (!student)
@@ -34,17 +64,6 @@ export class EstudianteService {
         'El estudiante no existe',
         BusinessError.NOT_FOUND,
       );
-    else if (student.proyectos.length > 0)
-      throw new BusinessLogicException(
-        'El estudiante no puede ser eliminado porque tiene proyectos activos',
-        BusinessError.PRECONDITION_FAILED,
-      );
-    else this.estudianteRepository.remove(student);
-
     return student;
-  }
-
-  async findAllEstudiantes(): Promise<EstudianteEntity[]> {
-    return await this.estudianteRepository.find();
   }
 }

@@ -15,9 +15,7 @@ export class ProyectoController {
 
   @Post()
   async create(@Body() proyectoDto: ProyectoDto) {
-    const estudiantes = await this.estudianteService.findAllEstudiantes();
-    const lider = estudiantes.find(e => e.id === proyectoDto.liderId);
-    
+    const lider = await this.estudianteService.findOne(proyectoDto.liderId);
     if (!lider) {
       throw new Error(`Estudiante con ID ${proyectoDto.liderId} no encontrado`);
     }

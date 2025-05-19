@@ -13,8 +13,6 @@ export class ProfesorService {
   ) {}
 
   async create(profesor: ProfesorEntity): Promise<ProfesorEntity> {
-    
-    console.log(profesor.extension);
     if (profesor.extension < 1000){
       throw new BusinessLogicException(
         'El profesor tiene una extensión incorrecta',

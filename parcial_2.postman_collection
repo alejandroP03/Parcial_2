@@ -1,0 +1,804 @@
+{
+	"info": {
+		"_postman_id": "f6c8bb7f-5a39-4a67-85bc-172be2bb36a4",
+		"name": "Parcial 2",
+		"description": "## Estudiantes\n\n### Crear un Estudiante\n\nCrea un nuevo estudiante en el sistema.\n\n- **URL**: `/estudiante`\n    \n- **Método**: `POST`\n    \n- **Cuerpo de la Solicitud**:\n    \n\n``` json\n{\n  \"cedula\": 12345678,\n  \"nombre\": \"Juan Pérez\",\n  \"semestre\": 5,\n  \"programa\": \"Ingeniería de Software\",\n  \"promedio\": 4.2\n}\n\n ```\n\n- **Respuesta Exitosa**:\n    \n    - **Código**: 201 Created\n        \n    - **Contenido**:\n        \n\n``` json\n{\n  \"id\": \"1\",\n  \"cedula\": 12345678,\n  \"nombre\": \"Juan Pérez\",\n  \"semestre\": 5,\n  \"programa\": \"Ingeniería de Software\",\n  \"promedio\": 4.2,\n  \"proyectos\": []\n}\n\n ```\n\n- **Respuestas de Error**:\n    \n    - **Código**: 400 Bad Request\n        \n        - Si el promedio es menor o igual a 3.2: `\"El estudiante no tiene el promedio requerido (más de 3.2)\"`\n            \n        - Si el semestre es menor a 4: `\"El estudiante está en tercer semestre o inferior\"`\n            \n\n### Obtener Todos los Estudiantes\n\nObtiene una lista de todos los estudiantes registrados.\n\n- **URL**: `/estudiante`\n    \n- **Método**: `GET`\n    \n- **Respuesta Exitosa**:\n    \n    - **Código**: 200 OK\n        \n    - **Contenido**:\n        \n\n``` json\n[\n  {\n    \"id\": \"1\",\n    \"cedula\": 12345678,\n    \"nombre\": \"Juan Pérez\",\n    \"semestre\": 5,\n    \"programa\": \"Ingeniería de Software\",\n    \"promedio\": 4.2,\n    \"proyectos\": []\n  },\n  {\n    \"id\": \"2\",\n    \"cedula\": 87654321,\n    \"nombre\": \"María López\",\n    \"semestre\": 6,\n    \"programa\": \"Ingeniería de Sistemas\",\n    \"promedio\": 4.5,\n    \"proyectos\": []\n  }\n]\n\n ```\n\n### Eliminar un Estudiante\n\nElimina un estudiante del sistema por su ID.\n\n- **URL**: `/estudiante/:id`\n    \n- **Método**: `DELETE`\n    \n- **Parámetros de URL**:\n    \n    - `id`: ID del estudiante a eliminar\n        \n- **Respuesta Exitosa**:\n    \n    - **Código**: 200 OK\n        \n    - **Contenido**: Datos del estudiante eliminado\n        \n\n``` json\n{\n  \"id\": \"1\",\n  \"cedula\": 12345678,\n  \"nombre\": \"Juan Pérez\",\n  \"semestre\": 5,\n  \"programa\": \"Ingeniería de Software\",\n  \"promedio\": 4.2\n}\n\n ```\n\n- **Respuestas de Error**:\n    \n    - **Código**: 404 Not Found\n        \n        - Si el estudiante no existe: `\"El estudiante no existe\"`\n            \n    - **Código**: 400 Bad Request\n        \n        - Si el estudiante tiene proyectos activos: `\"El estudiante no puede ser eliminado porque tiene proyectos activos\"`\n            \n\n---\n\n## Profesores\n\n### Crear un Profesor\n\nCrea un nuevo profesor en el sistema.\n\n- **URL**: `/profesor`\n    \n- **Método**: `POST`\n    \n- **Cuerpo de la Solicitud**:\n    \n\n``` json\n{\n  \"cedula\": 12345678,\n  \"nombre\": \"Carlos Rodríguez\",\n  \"departamento\": 1,\n  \"extension\": 1234,\n  \"esParEvaluado\": true\n}\n\n ```\n\n- **Respuesta Exitosa**:\n    \n    - **Código**: 201 Created\n        \n    - **Contenido**:\n        \n\n``` json\n{\n  \"id\": \"1\",\n  \"cedula\": 12345678,\n  \"nombre\": \"Carlos Rodríguez\",\n  \"departamento\": 1,\n  \"extension\": 1234,\n  \"esParEvaluado\": true,\n  \"mentorias\": [],\n  \"evaluaciones\": []\n}\n\n ```\n\n- **Respuestas de Error**:\n    \n    - **Código**: 400 Bad Request\n        \n        - Si la extensión es menor a 1000: `\"El profesor tiene una extensión incorrecta\"`\n            \n\n### Obtener un Profesor por ID\n\nObtiene los detalles de un profesor específico.\n\n- **URL**: `/profesor/:id`\n    \n- **Método**: `GET`\n    \n- **Parámetros de URL**:\n    \n    - `id`: ID del profesor a consultar\n        \n- **Respuesta Exitosa**:\n    \n    - **Código**: 200 OK\n        \n    - **Contenido**:\n        \n\n``` json\n{\n  \"id\": \"1\",\n  \"cedula\": 12345678,\n  \"nombre\": \"Carlos Rodríguez\",\n  \"departamento\": 1,\n  \"extension\": 1234,\n  \"esParEvaluado\": true,\n  \"mentorias\": [],\n  \"evaluaciones\": []\n}\n\n ```\n\n- **Respuestas de Error**:\n    \n    - **Código**: 404 Not Found\n        \n        - Si el profesor no existe: `\"El profesor no existe\"`\n            \n\n---\n\n## Proyectos\n\n### Crear un Proyecto\n\nCrea un nuevo proyecto en el sistema.\n\n- **URL**: `/proyecto`\n    \n- **Método**: `POST`\n    \n- **Cuerpo de la Solicitud**:\n    \n\n``` json\n{\n  \"titulo\": \"Sistema de Gestión Universitaria\",\n  \"area\": \"Desarrollo Web\",\n  \"presupuesto\": 5000,\n  \"fecha_inicio\": \"2025-01-01\",\n  \"fecha_fin\": \"2025-06-30\",\n  \"liderId\": \"1\",\n  \"mentorId\": \"1\"\n}\n\n ```\n\n- **Respuesta Exitosa**:\n    \n    - **Código**: 201 Created\n        \n    - **Contenido**:\n        \n\n``` json\n{\n  \"id\": \"1\",\n  \"titulo\": \"Sistema de Gestión Universitaria\",\n  \"area\": \"Desarrollo Web\",\n  \"presupuesto\": 5000,\n  \"estado\": 1,\n  \"nota_final\": 0,\n  \"fecha_inicio\": \"2025-01-01\",\n  \"fecha_fin\": \"2025-06-30\",\n  \"lider\": {\n    \"id\": \"1\",\n    \"cedula\": 12345678,\n    \"nombre\": \"Juan Pérez\",\n    \"semestre\": 5,\n    \"programa\": \"Ingeniería de Software\",\n    \"promedio\": 4.2\n  },\n  \"mentor\": {\n    \"id\": \"1\",\n    \"cedula\": 12345678,\n    \"nombre\": \"Carlos Rodríguez\",\n    \"departamento\": 1,\n    \"extension\": 1234,\n    \"esParEvaluado\": true\n  },\n  \"evaluaciones\": []\n}\n\n ```\n\n- **Respuestas de Error**:\n    \n    - **Código**: 400 Bad Request\n        \n        - Si el presupuesto es menor a 0: `\"El proyecto no tiene el presupuesto necesario\"`\n            \n        - Si el título tiene menos de 15 caracteres: `\"El proyecto tiene un título muy corto\"`\n            \n        - Si no se encuentra el estudiante líder: `\"Estudiante con ID X no encontrado\"`\n            \n        - Si no se encuentra el profesor mentor: `\"El profesor no existe\"`\n            \n\n### Obtener un Proyecto por ID\n\nObtiene los detalles de un proyecto específico.\n\n- **URL**: `/proyecto/:id`\n    \n- **Método**: `GET`\n    \n- **Parámetros de URL**:\n    \n    - `id`: ID del proyecto a consultar\n        \n- **Respuesta Exitosa**:\n    \n    - **Código**: 200 OK\n        \n    - **Contenido**: Datos completos del proyecto, incluyendo relaciones\n        \n\n``` json\n{\n  \"id\": \"1\",\n  \"titulo\": \"Sistema de Gestión Universitaria\",\n  \"area\": \"Desarrollo Web\",\n  \"presupuesto\": 5000,\n  \"estado\": 1,\n  \"nota_final\": 0,\n  \"fecha_inicio\": \"2025-01-01\",\n  \"fecha_fin\": \"2025-06-30\",\n  \"lider\": {\n    \"id\": \"1\",\n    \"cedula\": 12345678,\n    \"nombre\": \"Juan Pérez\"\n  },\n  \"mentor\": {\n    \"id\": \"1\",\n    \"cedula\": 12345678,\n    \"nombre\": \"Carlos Rodríguez\"\n  },\n  \"evaluaciones\": []\n}\n\n ```\n\n- **Respuestas de Error**:\n    \n    - **Código**: 404 Not Found\n        \n        - Si el proyecto no existe: `\"El proyecto no existe\"`\n            \n\n### Avanzar Estado de un Proyecto\n\nAvanza el estado de un proyecto al siguiente nivel.\n\n- **URL**: `/proyecto/:id/advance`\n    \n- **Método**: `PUT`\n    \n- **Parámetros de URL**:\n    \n    - `id`: ID del proyecto a avanzar\n        \n- **Respuesta Exitosa**:\n    \n    - **Código**: 200 OK\n        \n    - **Contenido**: Datos del proyecto con el estado actualizado\n        \n\n``` json\n{\n  \"id\": \"1\",\n  \"titulo\": \"Sistema de Gestión Universitaria\",\n  \"area\": \"Desarrollo Web\",\n  \"presupuesto\": 5000,\n  \"estado\": 2,\n  \"nota_final\": 0,\n  \"fecha_inicio\": \"2025-01-01\",\n  \"fecha_fin\": \"2025-06-30\",\n  \"lider\": {\n    \"id\": \"1\",\n    \"cedula\": 12345678,\n    \"nombre\": \"Juan Pérez\"\n  },\n  \"mentor\": {\n    \"id\": \"1\",\n    \"cedula\": 12345678,\n    \"nombre\": \"Carlos Rodríguez\"\n  }\n}\n\n ```\n\n- **Respuestas de Error**:\n    \n    - **Código**: 404 Not Found\n        \n        - Si el proyecto no existe: `\"El proyecto no existe\"`\n            \n    - **Código**: 400 Bad Request\n        \n        - Si el estado ya es el máximo (5): `\"El proyecto no puede alcanzar un estado más alto\"`\n            \n\n---\n\n## Evaluaciones\n\n### Crear una Evaluación\n\nCrea una nueva evaluación para un proyecto.\n\n- **URL**: `/evaluacion`\n    \n- **Método**: `POST`\n    \n- **Cuerpo de la Solicitud**:\n    \n\n``` json\n{\n  \"calificacion\": 4.5,\n  \"proyectoId\": \"1\",\n  \"evaluadorId\": \"2\"\n}\n\n ```\n\n- **Respuesta Exitosa**:\n    \n    - **Código**: 201 Created\n        \n    - **Contenido**:\n        \n\n``` json\n{\n  \"id\": \"1\",\n  \"calificacion\": 4.5,\n  \"proyecto\": {\n    \"id\": \"1\",\n    \"titulo\": \"Sistema de Gestión Universitaria\"\n  },\n  \"profesor\": {\n    \"id\": \"2\",\n    \"nombre\": \"Ana Martínez\"\n  }\n}\n\n ```\n\n- **Respuestas de Error**:\n    \n    - **Código**: 400 Bad Request\n        \n        - Si la calificación está fuera del rango 0-5: `\"La calificación debe estar entre 0 y 5\"`\n            \n        - Si el evaluador es el mismo que el mentor del proyecto: `\"El evaluador no puede ser el mismo que el mentor del proyecto\"`\n            \n    - **Código**: 404 Not Found\n        \n        - Si el proyecto no existe: `\"El proyecto no existe\"`\n            \n        - Si el profesor evaluador no existe: `\"El profesor no existe\"`",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29659642"
+	},
+	"item": [
+		{
+			"name": "Estudiantes",
+			"item": [
+				{
+					"name": "Crear Estudiante (Exitoso)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response has correct properties\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('id');",
+									"    pm.expect(jsonData.cedula).to.eql(12345678);",
+									"    pm.expect(jsonData.nombre).to.eql(\"Juan Pérez\");",
+									"    pm.expect(jsonData.semestre).to.eql(5);",
+									"    pm.expect(jsonData.programa).to.eql(\"Ingeniería de Software\");",
+									"    pm.expect(jsonData.promedio).to.eql(4.2);",
+									"});",
+									"",
+									"// Guardar el ID para usarlo en otras pruebas",
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"estudiante_id\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cedula\": 12345678,\n  \"nombre\": \"Juan Pérez\",\n  \"semestre\": 5,\n  \"programa\": \"Ingeniería de Software\",\n  \"promedio\": 4.2\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/estudiante",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiante"
+							]
+						},
+						"description": "Crea un nuevo estudiante con datos válidos"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Estudiante (Promedio Bajo)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Error message is correct\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.include(\"El estudiante no tiene el promedio requerido\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cedula\": 87654321,\n  \"nombre\": \"Pedro Gómez\",\n  \"semestre\": 5,\n  \"programa\": \"Ingeniería de Software\",\n  \"promedio\": 3.0\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/estudiante",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiante"
+							]
+						},
+						"description": "Intenta crear un estudiante con promedio menor a 3.2"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Todos los Estudiantes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is an array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('array');",
+									"    pm.expect(jsonData.length).to.be.at.least(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/estudiante",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiante"
+							]
+						},
+						"description": "Obtiene la lista de todos los estudiantes"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Estudiante",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has correct properties\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('id');",
+									"    pm.expect(jsonData.id).to.eql(pm.environment.get(\"estudiante_id\"));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/estudiante/{{estudiante_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiante",
+								"{{estudiante_id}}"
+							]
+						},
+						"description": "Elimina un estudiante por su ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Estudiante (Exitoso) Pruebas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response has correct properties\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('id');",
+									"    pm.expect(jsonData.cedula).to.eql(12345678);",
+									"    pm.expect(jsonData.nombre).to.eql(\"Juan Pérez\");",
+									"    pm.expect(jsonData.semestre).to.eql(5);",
+									"    pm.expect(jsonData.programa).to.eql(\"Ingeniería de Software\");",
+									"    pm.expect(jsonData.promedio).to.eql(4.2);",
+									"});",
+									"",
+									"// Guardar el ID para usarlo en otras pruebas",
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"estudiante_id\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cedula\": 12345678,\n  \"nombre\": \"Juan Pérez\",\n  \"semestre\": 5,\n  \"programa\": \"Ingeniería de Software\",\n  \"promedio\": 4.2\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/estudiante",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estudiante"
+							]
+						},
+						"description": "Crea un nuevo estudiante con datos válidos"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints relacionados con la gestión de estudiantes"
+		},
+		{
+			"name": "Profesores",
+			"item": [
+				{
+					"name": "Crear Profesor (Exitoso)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response has correct properties\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('id');",
+									"    pm.expect(jsonData.cedula).to.eql(12345678);",
+									"    pm.expect(jsonData.nombre).to.eql(\"Carlos Rodríguez\");",
+									"    pm.expect(jsonData.departamento).to.eql(1);",
+									"    pm.expect(jsonData.extension).to.eql(1234);",
+									"});",
+									"",
+									"// Guardar el ID para usarlo en otras pruebas",
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"profesor_id\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cedula\": 12345678,\n  \"nombre\": \"Carlos Rodríguez\",\n  \"departamento\": 1,\n  \"extension\": 1234,\n  \"esParEvaluado\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/profesor",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profesor"
+							]
+						},
+						"description": "Crea un nuevo profesor con datos válidos"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Profesor (Exitoso) Evaluador",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response has correct properties\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('id');",
+									"    pm.expect(jsonData.cedula).to.eql(12345678);",
+									"    pm.expect(jsonData.nombre).to.eql(\"Carlos Rodríguez\");",
+									"    pm.expect(jsonData.departamento).to.eql(1);",
+									"    pm.expect(jsonData.extension).to.eql(1234);",
+									"});",
+									"",
+									"// Guardar el ID para usarlo en otras pruebas",
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"evaluador_id\", jsonData.id);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cedula\": 12345678,\n  \"nombre\": \"Carlos Rodríguez\",\n  \"departamento\": 1,\n  \"extension\": 1234,\n  \"esParEvaluado\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/profesor",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profesor"
+							]
+						},
+						"description": "Crea un nuevo profesor con datos válidos"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Profesor (Extensión Incorrecta)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Error message is correct\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.include(\"El profesor tiene una extensión incorrecta\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cedula\": 87654321,\n  \"nombre\": \"Ana Martínez\",\n  \"departamento\": 2,\n  \"extension\": 999,\n  \"esParEvaluado\": false\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/profesor",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profesor"
+							]
+						},
+						"description": "Intenta crear un profesor con extensión menor a 1000"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Profesor por ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has correct properties\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('id');",
+									"    pm.expect(jsonData.id).to.eql(pm.environment.get(\"profesor_id\"));",
+									"    pm.expect(jsonData).to.have.property('nombre');",
+									"    pm.expect(jsonData).to.have.property('mentorias');",
+									"    pm.expect(jsonData).to.have.property('evaluaciones');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/profesor/{{profesor_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profesor",
+								"{{profesor_id}}"
+							]
+						},
+						"description": "Obtiene un profesor por su ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Profesor Inexistente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Error message is correct\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.include(\"El profesor no existe\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/profesor/999",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profesor",
+								"999"
+							]
+						},
+						"description": "Intenta obtener un profesor con ID inexistente"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints relacionados con la gestión de profesores"
+		},
+		{
+			"name": "Proyectos",
+			"item": [
+				{
+					"name": "Crear Proyecto (Exitoso)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response has correct properties\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('id');",
+									"    pm.expect(jsonData.titulo).to.eql(\"Sistema de Gestión Universitaria\");",
+									"    pm.expect(jsonData.area).to.eql(\"Desarrollo Web\");",
+									"    pm.expect(jsonData.presupuesto).to.eql(5000);",
+									"    pm.expect(jsonData.estado).to.eql(1);",
+									"    pm.expect(jsonData).to.have.property('lider');",
+									"    pm.expect(jsonData).to.have.property('mentor');",
+									"});",
+									"",
+									"// Guardar el ID para usarlo en otras pruebas",
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"proyecto_id\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"titulo\": \"Sistema de Gestión Universitaria\",\n  \"area\": \"Desarrollo Web\",\n  \"presupuesto\": 5000,\n  \"fecha_inicio\": \"2025-01-01\",\n  \"fecha_fin\": \"2025-06-30\",\n  \"liderId\": \"{{estudiante_id}}\",\n  \"mentorId\": \"{{profesor_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/proyecto",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"proyecto"
+							]
+						},
+						"description": "Crea un nuevo proyecto con datos válidos"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Proyecto (Presupuesto Negativo)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Error message is correct\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.include(\"El proyecto no tiene el presupuesto necesario\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"titulo\": \"Sistema de Gestión Universitaria\",\n  \"area\": \"Desarrollo Web\",\n  \"presupuesto\": -1000,\n  \"fecha_inicio\": \"2025-01-01\",\n  \"fecha_fin\": \"2025-06-30\",\n  \"liderId\": \"{{estudiante_id}}\",\n  \"mentorId\": \"{{profesor_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/proyecto",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"proyecto"
+							]
+						},
+						"description": "Intenta crear un proyecto con presupuesto negativo"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Proyecto por ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has correct properties\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('id');",
+									"    pm.expect(jsonData.id).to.eql(pm.environment.get(\"proyecto_id\"));",
+									"    pm.expect(jsonData).to.have.property('titulo');",
+									"    pm.expect(jsonData).to.have.property('mentor');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/proyecto/{{proyecto_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"proyecto",
+								"{{proyecto_id}}"
+							]
+						},
+						"description": "Obtiene un proyecto por su ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Avanzar Estado de Proyecto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Estado has been incremented\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.estado).to.be.greaterThan(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/proyecto/{{proyecto_id}}/advance",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"proyecto",
+								"{{proyecto_id}}",
+								"advance"
+							]
+						},
+						"description": "Avanza el estado de un proyecto"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints relacionados con la gestión de proyectos"
+		},
+		{
+			"name": "Evaluaciones",
+			"item": [
+				{
+					"name": "Crear Evaluación (Exitoso)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response has correct properties\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('id');",
+									"    pm.expect(jsonData.calificacion).to.eql(4.5);",
+									"    pm.expect(jsonData).to.have.property('proyecto');",
+									"    pm.expect(jsonData).to.have.property('profesor');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"calificacion\": 4.5,\n  \"proyectoId\": \"{{proyecto_id}}\",\n  \"evaluadorId\": \"{{evaluador_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/evaluacion",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"evaluacion"
+							]
+						},
+						"description": "Crea una nueva evaluación con datos válidos"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Evaluación (Calificación Fuera de Rango)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Error message is correct\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.include(\"La calificación debe estar entre 0 y 5\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"calificacion\": 6,\n  \"proyectoId\": \"{{proyecto_id}}\",\n  \"evaluadorId\": \"{{evaluador_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/evaluacion",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"evaluacion"
+							]
+						},
+						"description": "Intenta crear una evaluación con calificación fuera del rango 0-5"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints relacionados con la gestión de evaluaciones"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000/api/v1",
+			"type": "string"
+		}
+	]
+}

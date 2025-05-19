@@ -1,0 +1,614 @@
+{
+	"id": "576fe07d-fc59-48d3-9611-30365f73dd18",
+	"name": "Parcial 2",
+	"timestamp": "2025-05-19T04:27:09.512Z",
+	"collection_id": "29659642-f6c8bb7f-5a39-4a67-85bc-172be2bb36a4",
+	"folder_id": 0,
+	"environment_id": "29659642-cbb7c216-b5f8-48c9-befe-5fc4fd598c54",
+	"totalPass": 32,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-05-19T04:27:07.663Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "c11fb919-5889-4926-bba1-399d3df4dc33",
+			"name": "Crear Estudiante (Exitoso)",
+			"url": "http://localhost:3000/api/v1/estudiante",
+			"time": 46,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Response has correct properties": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has correct properties": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				46
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Response has correct properties": true
+				}
+			]
+		},
+		{
+			"id": "df55cdb3-e40a-406b-bb04-cbad035b19a0",
+			"name": "Crear Estudiante (Promedio Bajo)",
+			"url": "http://localhost:3000/api/v1/estudiante",
+			"time": 7,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Error message is correct": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Error message is correct": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Error message is correct": true
+				}
+			]
+		},
+		{
+			"id": "2346214f-e257-4889-b65f-403f7a104b30",
+			"name": "Obtener Todos los Estudiantes",
+			"url": "http://localhost:3000/api/v1/estudiante",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response is an array": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is an array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response is an array": true
+				}
+			]
+		},
+		{
+			"id": "0ab42298-542e-48ca-b7d5-bf3420c85fad",
+			"name": "Eliminar Estudiante",
+			"url": "http://localhost:3000/api/v1/estudiante/c29e5d64-a46a-4e12-9d3c-78701d4586f6",
+			"time": 21,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has correct properties": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has correct properties": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				21
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has correct properties": true
+				}
+			]
+		},
+		{
+			"id": "77c92704-fe9d-4dcc-a29e-610e3ca9c6ba",
+			"name": "Crear Estudiante (Exitoso) Pruebas",
+			"url": "http://localhost:3000/api/v1/estudiante",
+			"time": 12,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Response has correct properties": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has correct properties": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Response has correct properties": true
+				}
+			]
+		},
+		{
+			"id": "df9084da-28a1-40a3-84d1-12134393a218",
+			"name": "Crear Profesor (Exitoso)",
+			"url": "http://localhost:3000/api/v1/profesor",
+			"time": 12,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Response has correct properties": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has correct properties": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Response has correct properties": true
+				}
+			]
+		},
+		{
+			"id": "61e62030-e214-49a8-8a3d-1329fd03d27a",
+			"name": "Crear Profesor (Exitoso) Evaluador",
+			"url": "http://localhost:3000/api/v1/profesor",
+			"time": 10,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Response has correct properties": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has correct properties": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Response has correct properties": true
+				}
+			]
+		},
+		{
+			"id": "d2a5d603-2ea9-45f0-8386-0bcb2bd386bf",
+			"name": "Crear Profesor (Extensión Incorrecta)",
+			"url": "http://localhost:3000/api/v1/profesor",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Error message is correct": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Error message is correct": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Error message is correct": true
+				}
+			]
+		},
+		{
+			"id": "d938f91c-c338-4909-a3ac-89109d37710f",
+			"name": "Obtener Profesor por ID",
+			"url": "http://localhost:3000/api/v1/profesor/f4de7bb7-fe50-404c-af0e-73ea1a341d9c",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has correct properties": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has correct properties": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has correct properties": true
+				}
+			]
+		},
+		{
+			"id": "00231078-1f2a-4a0e-bb84-192f7abb26f8",
+			"name": "Obtener Profesor Inexistente",
+			"url": "http://localhost:3000/api/v1/profesor/999",
+			"time": 8,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Error message is correct": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Error message is correct": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Error message is correct": true
+				}
+			]
+		},
+		{
+			"id": "4adaf90e-1619-420e-a589-a786239e982e",
+			"name": "Crear Proyecto (Exitoso)",
+			"url": "http://localhost:3000/api/v1/proyecto",
+			"time": 17,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Response has correct properties": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has correct properties": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Response has correct properties": true
+				}
+			]
+		},
+		{
+			"id": "95756d6b-9f6a-4688-a050-4bff4c4e1e22",
+			"name": "Crear Proyecto (Presupuesto Negativo)",
+			"url": "http://localhost:3000/api/v1/proyecto",
+			"time": 10,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Error message is correct": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Error message is correct": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Error message is correct": true
+				}
+			]
+		},
+		{
+			"id": "3bd0e1c4-86b7-490c-a93c-d74698176884",
+			"name": "Obtener Proyecto por ID",
+			"url": "http://localhost:3000/api/v1/proyecto/6212e8ce-a041-4cd1-aece-a4888e13a48c",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has correct properties": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has correct properties": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has correct properties": true
+				}
+			]
+		},
+		{
+			"id": "a8149d20-6e8e-4f7b-a8f5-4df07d95cf5b",
+			"name": "Avanzar Estado de Proyecto",
+			"url": "http://localhost:3000/api/v1/proyecto/6212e8ce-a041-4cd1-aece-a4888e13a48c/advance",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Estado has been incremented": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Estado has been incremented": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Estado has been incremented": true
+				}
+			]
+		},
+		{
+			"id": "4f8eca4d-f7e1-47c1-9f1b-118239747a5d",
+			"name": "Crear Evaluación (Exitoso)",
+			"url": "http://localhost:3000/api/v1/evaluacion",
+			"time": 15,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Response has correct properties": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has correct properties": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Response has correct properties": true
+				}
+			]
+		},
+		{
+			"id": "18369b1f-6c82-4a07-b923-47936548af50",
+			"name": "Crear Evaluación (Calificación Fuera de Rango)",
+			"url": "http://localhost:3000/api/v1/evaluacion",
+			"time": 13,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Error message is correct": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Error message is correct": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Error message is correct": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 220,
+	"collection": {
+		"requests": [
+			{
+				"id": "c11fb919-5889-4926-bba1-399d3df4dc33",
+				"method": "POST"
+			},
+			{
+				"id": "df55cdb3-e40a-406b-bb04-cbad035b19a0",
+				"method": "POST"
+			},
+			{
+				"id": "2346214f-e257-4889-b65f-403f7a104b30",
+				"method": "GET"
+			},
+			{
+				"id": "0ab42298-542e-48ca-b7d5-bf3420c85fad",
+				"method": "DELETE"
+			},
+			{
+				"id": "77c92704-fe9d-4dcc-a29e-610e3ca9c6ba",
+				"method": "POST"
+			},
+			{
+				"id": "df9084da-28a1-40a3-84d1-12134393a218",
+				"method": "POST"
+			},
+			{
+				"id": "61e62030-e214-49a8-8a3d-1329fd03d27a",
+				"method": "POST"
+			},
+			{
+				"id": "d2a5d603-2ea9-45f0-8386-0bcb2bd386bf",
+				"method": "POST"
+			},
+			{
+				"id": "d938f91c-c338-4909-a3ac-89109d37710f",
+				"method": "GET"
+			},
+			{
+				"id": "00231078-1f2a-4a0e-bb84-192f7abb26f8",
+				"method": "GET"
+			},
+			{
+				"id": "4adaf90e-1619-420e-a589-a786239e982e",
+				"method": "POST"
+			},
+			{
+				"id": "95756d6b-9f6a-4688-a050-4bff4c4e1e22",
+				"method": "POST"
+			},
+			{
+				"id": "3bd0e1c4-86b7-490c-a93c-d74698176884",
+				"method": "GET"
+			},
+			{
+				"id": "a8149d20-6e8e-4f7b-a8f5-4df07d95cf5b",
+				"method": "PUT"
+			},
+			{
+				"id": "4f8eca4d-f7e1-47c1-9f1b-118239747a5d",
+				"method": "POST"
+			},
+			{
+				"id": "18369b1f-6c82-4a07-b923-47936548af50",
+				"method": "POST"
+			}
+		]
+	}
+}
